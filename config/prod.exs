@@ -10,6 +10,8 @@ config :pocket_url, PocketUrlWeb.Endpoint,
   force_ssl: [rewrite_on: [:x_forwarded_host, :x_forwarded_port, :x_forwarded_proto]],
   cache_static_manifest: "priv/static/cache_manifest.json"
 
+config :pocket_url, base_url: "https://pocket-url.fly.dev/"
+
 # Configures Swoosh API Client
 config :swoosh, api_client: Swoosh.ApiClient.Finch, finch_name: PocketUrl.Finch
 
