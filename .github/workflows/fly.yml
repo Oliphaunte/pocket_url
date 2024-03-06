@@ -46,6 +46,9 @@ jobs:
           while ! pg_isready -q -h localhost -p 5432 -U postgres; do
             sleep 1
           done
+      - name: Verify PostgreSQL container status
+        run: |
+          docker ps --filter name=postgres
       - name: Set up the database
         run: |
           mix ecto.create
@@ -56,6 +59,10 @@ jobs:
           DB_USER: postgres
           DB_PASSWORD: postgres
           DB_NAME: pocket_url_test
+      - name: Retrieve PostgreSQL logs
+        if: failure()
+        run: |
+          docker logs $(docker ps -aq --filter name=postgres)
       - name: Run tests
         run: mix test
         env:
