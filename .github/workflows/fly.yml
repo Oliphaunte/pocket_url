@@ -5,6 +5,12 @@ on:
     branches:
       - main
 
+env:
+  MIX_ENV: test
+
+permissions:
+  contents: read
+
 jobs:
   test:
     name: Run tests
@@ -14,9 +20,7 @@ jobs:
       postgres:
         image: postgres
         env:
-          POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: pocket_url_test
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -50,22 +54,10 @@ jobs:
         run: |
           mix ecto.create
           mix ecto.migrate
-        env:
-          DB_HOST: localhost
-          DB_PORT: 5432
-          DB_USER: postgres
-          DB_PASSWORD: postgres
-          DB_NAME: pocket_url_test
       - name: Check Formatting
         run: mix format --check-formatted
       - name: Run tests
         run: mix test
-        env:
-          DB_HOST: localhost
-          DB_PORT: 5432
-          DB_USER: postgres
-          DB_PASSWORD: postgres
-          DB_NAME: pocket_url_test
 
   deploy:
     name: Deploy app
