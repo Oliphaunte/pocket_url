@@ -85,4 +85,6 @@ config :phoenix_live_view, :debug_heex_annotations, true
 # Disable swoosh api client as it is only required for production adapters.
 config :swoosh, :api_client, false
 
-import_config "local.secret.exs"
+if File.exists?("config/local.secret.exs") do
+  import_config "local.secret.exs"
+end

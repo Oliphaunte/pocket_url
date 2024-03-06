@@ -36,4 +36,4 @@ npm-debug.log
 /assets/node_modules/
 
 # Ignore local secrets
-config/local.secret.exs
+*.secret.*
