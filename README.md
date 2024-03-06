@@ -11,7 +11,11 @@ You will need the following pieces to run the application:
 - Postgres
 - PNPM/NPM/Yarn
 
-All instructions assume you are working with an Apple environment
+# Notes
+
+- There is a production version of the application that can be seen here: https://pocket-url.fly.dev/ (It may take a moment to load as it only has one machine assigned and it hibernates)
+- There is a workflow that is designed to show a simpel CI/CD workflow for the app from dev to production, that runs testing and formatting
+- All instructions below assume you are working with an Apple environment
 
 # Setup
 
