@@ -1,6 +1,6 @@
 defmodule PocketUrl.Urls do
   @moduledoc """
-
+  CRUD methods for the Url Schema
   """
 
   alias PocketUrl.Repo
@@ -46,7 +46,7 @@ defmodule PocketUrl.Urls do
   end
 
   @doc """
-
+  Gets a url by specific params
   """
   def get_by(params \\ %{}) do
     Repo.get_by(Url, params)
