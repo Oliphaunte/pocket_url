@@ -1,4 +1,19 @@
 defmodule PocketUrl.Url do
+  @moduledoc """
+  Represents a URL record in the database.
+
+  The `Url` schema defines the structure of the "urls" table, which includes the following fields:
+  - `original_url`: The original URL that is being shortened.
+  - `short_code`: The generated short code for the URL.
+  - `visit_count`: The number of times the shortened URL has been visited.
+
+  The module provides a `changeset/2` function that validates and generates the necessary fields when creating or updating a URL record.
+
+  The `original_url` field is validated using a regular expression to ensure it is a valid URL format.
+
+  If the `short_code` field is not provided, a shortened slug is automatically generated using the first 6 characters of a UUID.
+  """
+
   use Ecto.Schema
   import Ecto.Changeset
 

@@ -1,4 +1,6 @@
 defmodule PocketUrlWeb.Forms.Url do
+  @moduledoc false
+
   use PocketUrlWeb, :live_component
 
   alias PocketUrl.Url

@@ -1,4 +1,6 @@
 defmodule PocketUrlWeb.Table.Stats do
+  @moduledoc false
+
   use PocketUrlWeb, :live_component
 
   @base_url Application.compile_env(:pocket_url, :base_url)

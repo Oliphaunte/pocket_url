@@ -43,6 +43,7 @@ defmodule PocketUrl.MixProject do
       {:phoenix_live_dashboard, "~> 0.8.3"},
       {:esbuild, "~> 0.8", runtime: Mix.env() == :dev},
       {:tailwind, "~> 0.2", runtime: Mix.env() == :dev},
+      {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
       {:heroicons,
        github: "tailwindlabs/heroicons",
        tag: "v2.1.1",
