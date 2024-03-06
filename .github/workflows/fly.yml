@@ -9,6 +9,20 @@ jobs:
   test:
     name: Run tests
     runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
     steps:
       - uses: actions/checkout@v3
       - name: Set up Elixir
@@ -25,14 +39,30 @@ jobs:
             ${{ runner.os }}-mix-
       - name: Install dependencies
         run: mix deps.get
+      - name: Wait for PostgreSQL
+        run: |
+          while ! pg_isready -q -h localhost -p 5432 -U postgres; do
+            sleep 1
+          done
+      - name: Set up the database
+        run: |
+          mix ecto.create
+          mix ecto.migrate
       - name: Run tests
         run: mix test
+        env:
+          DB_HOST: localhost
+          DB_PORT: 5432
+          DB_USER: postgres
+          DB_PASSWORD: postgres
+          DB_NAME: your_database_name
 
   deploy:
     name: Deploy app
     needs: test
     runs-on: ubuntu-latest
     concurrency: deploy-group
+
     steps:
       - uses: actions/checkout@v3
       - uses: superfly/flyctl-actions/setup-flyctl@master
