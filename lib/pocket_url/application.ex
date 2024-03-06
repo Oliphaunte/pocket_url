@@ -17,7 +17,8 @@ defmodule PocketUrl.Application do
       # Start a worker by calling: PocketUrl.Worker.start_link(arg)
       # {PocketUrl.Worker, arg},
       # Start to serve requests, typically the last entry
-      PocketUrlWeb.Endpoint
+      PocketUrlWeb.Endpoint,
+      PocketUrl.Application.UrlsGenServer
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
