@@ -14,8 +14,8 @@ jobs:
       - name: Set up Elixir
         uses: erlef/setup-beam@v1
         with:
-          elixir-version: "1.15.7" # Specify your desired Elixir version
-          otp-version: "26.0" # Specify your desired OTP version
+          elixir-version: "1.15.7"
+          otp-version: "26.0"
       - name: Restore dependencies cache
         uses: actions/cache@v3
         with:
@@ -32,7 +32,7 @@ jobs:
     name: Deploy app
     needs: test
     runs-on: ubuntu-latest
-    concurrency: deploy-group # optional: ensure only one action runs at a time
+    concurrency: deploy-group
     steps:
       - uses: actions/checkout@v3
       - uses: superfly/flyctl-actions/setup-flyctl@master
