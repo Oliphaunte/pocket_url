@@ -56,6 +56,8 @@ jobs:
           DB_USER: postgres
           DB_PASSWORD: postgres
           DB_NAME: pocket_url_test
+      - name: Check Formatting
+        run: mix format --check-formatted
       - name: Run tests
         run: mix test
         env:
