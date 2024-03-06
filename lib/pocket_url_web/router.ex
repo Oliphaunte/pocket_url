@@ -17,7 +17,9 @@ defmodule PocketUrlWeb.Router do
   scope "/", PocketUrlWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
+    live "/", LandingLive, :index
+    live "/stats", StatsLive, :index
+    get "/:short_code", RedirectController, :show
   end
 
   # Other scopes may use custom stacks.
