@@ -67,7 +67,7 @@ config :pocket_url, PocketUrlWeb.Endpoint,
   ]
 
 # Enable dev routes for dashboard and mailbox
-config :pocket_url, dev_routes: true
+config :pocket_url, base_url: "https://localhost:4001", dev_routes: true
 
 # Do not include metadata nor timestamps in development logs
 config :logger, :console, format: "[$level] $message\n"
@@ -84,3 +84,5 @@ config :phoenix_live_view, :debug_heex_annotations, true
 
 # Disable swoosh api client as it is only required for production adapters.
 config :swoosh, :api_client, false
+
+import_config "local.secret.exs"

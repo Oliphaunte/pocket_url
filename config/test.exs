@@ -6,8 +6,6 @@ import Config
 # to provide built-in test partitioning in CI environment.
 # Run `mix help test` for more information.
 config :pocket_url, PocketUrl.Repo,
-  username: "postgres",
-  password: "postgres",
   hostname: "localhost",
   database: "pocket_url_test#{System.get_env("MIX_TEST_PARTITION")}",
   pool: Ecto.Adapters.SQL.Sandbox,
@@ -31,3 +29,5 @@ config :logger, level: :warning
 
 # Initialize plugs at runtime for faster test compilation
 config :phoenix, :plug_init_mode, :runtime
+
+import_config "local.secret.exs"
