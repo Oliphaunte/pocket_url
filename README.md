@@ -34,7 +34,13 @@ config :pocket_url, PocketUrl.Repo,
   password: "REPLACE_ME_WITH_YOUR_POSTGRES_PASSWORD"
 ```
 
-3. Run `mix deps.get` and then `mix ecto.setup`
+3. Run each of the following:
+
+- `mix deps.get`
+- `mix ecto.setup`
+- `mix tailwind.install`
+- `mix esbuild.install`
+
 4. `cd` in the `/assets` folder and run `pnpm install` (or, npm or yarn, depending on your choice)
 5. `cd` back into the root and run `mix phx.server` and visit the url at the localhost `https://localhost:4001`
 6. You can also run `mix test` to run the validation tests.
